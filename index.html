@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script>document.documentElement.classList.add("js")</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zamorak — Coming soon</title>
+  <meta name="description" content="Zamorak is working on something new. More soon.">
+  <link rel="canonical" href="https://zamorak.ai/">
+  <meta name="theme-color" content="#0a0505">
+  <meta name="color-scheme" content="dark">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Zamorak">
+  <meta property="og:title" content="Zamorak — Coming soon">
+  <meta property="og:description" content="Zamorak is working on something new. More soon.">
+  <meta property="og:url" content="https://zamorak.ai/">
+  <meta property="og:image" content="https://zamorak.ai/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Zamorak logo, a white partyhat, beside the wordmark">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/img/icon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="preload" href="assets/fonts/zamorak-serif-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/zamorak-mono-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/halftone.js" defer></script>
+  <script src="assets/js/inferno.js" defer></script>
+  <script src="assets/js/flames.js" defer></script>
+</head>
+<body>
+  <header class="site-header" data-header>
+    <div class="container site-header__inner">
+      <a class="lockup" href="./" aria-label="Zamorak home">
+        <img class="lockup__mark" src="assets/img/hat.png" width="360" height="325" alt="">
+        <span class="lockup__word">Zamorak</span>
+      </a>
+      <a class="btn btn--primary btn--sm" href="mailto:summon@zamorak.ai">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <canvas class="halftone hero__canvas" data-halftone="hero" data-src="assets/img/hat.png" aria-hidden="true"></canvas>
+
+      <div class="hero__copy">
+        <h1 id="hero-title">Proof in progress.</h1>
+        <p class="lede">Zamorak is working on something new. When it is ready, we’ll make it known.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href="mailto:summon@zamorak.ai">
+            Get in touch
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero__stage" data-halftone-stage>
+        <img class="hero__fallback" src="assets/img/hat.png" width="360" height="325" alt="">
+      </div>
+    </section>
+
+    <section class="section status" aria-labelledby="status-title">
+      <div class="container status__grid">
+        <div>
+          <p class="label">§1&ensp;Status</p>
+          <h2 id="status-title" class="statement">
+            We derive strength from chaos and adversity.
+            <span class="hi">Something is being forged</span>,
+            and it will <span class="squiggle">not</span> be rushed.
+          </h2>
+        </div>
+
+        <figure class="log">
+          <figcaption class="log__bar">
+            <span>zamorak.log</span>
+            <span class="log__state"><span class="pulse" aria-hidden="true"></span>compiling</span>
+          </figcaption>
+<pre class="log__body"><code>(./zamorak.tex
+<span class="warn">LaTeX Warning: Reference `launch' on page 1 undefined on input line 1.</span>
+
+<span class="warn">Overfull \hbox (666.0pt too wide) in paragraph at lines 6--6</span>
+[]\OT1/cmr/m/n/10 ambition
+[1] )
+Output written on zamorak.ai (1 page).<span class="cursor" aria-hidden="true"></span></code></pre>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section cta" aria-labelledby="cta-title">
+      <div class="container cta__inner">
+        <h2 id="cta-title">Beckon,<br>if you’re prepared.</h2>
+        <div class="actions">
+          <a class="btn btn--primary" href="mailto:summon@zamorak.ai">
+            summon@zamorak.ai
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <canvas class="site-footer__inferno" data-inferno aria-hidden="true"></canvas>
+    <div class="container site-footer__inner">
+      <a class="lockup lockup--sm" href="./" aria-label="Zamorak home">
+        <img class="lockup__mark" src="assets/img/hat.png" width="360" height="325" alt="">
+        <span class="lockup__word">Zamorak</span>
+      </a>
+      <p class="site-footer__meta">© 2026 Zamorak</p>
+    </div>
+    <canvas class="site-footer__flames" data-flames aria-hidden="true"></canvas>
+  </footer>
+</body>
+</html>

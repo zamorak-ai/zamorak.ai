@@ -1,0 +1,5 @@
+# GitHub Pages runs this through Jekyll. The pages are plain HTML without front
+# matter, so Jekyll only copies them; these paths stay out of the published site.
+exclude:
+  - README.md
+  - tools/

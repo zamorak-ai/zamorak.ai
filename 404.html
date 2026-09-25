@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script>document.documentElement.classList.add("js")</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found — Zamorak</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0a0505">
+  <meta name="color-scheme" content="dark">
+
+  <!-- Served for any missing path, so every URL here is root-relative. -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/icon-192.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="preload" href="/assets/fonts/zamorak-serif-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/zamorak-mono-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script src="/assets/js/site.js" defer></script>
+  <script src="/assets/js/halftone.js" defer></script>
+</head>
+<body>
+  <header class="site-header" data-header>
+    <div class="container site-header__inner">
+      <a class="lockup" href="/" aria-label="Zamorak home">
+        <img class="lockup__mark" src="/assets/img/hat.png" width="360" height="325" alt="">
+        <span class="lockup__word">Zamorak</span>
+      </a>
+      <a class="btn btn--primary btn--sm" href="mailto:summon@zamorak.ai">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero--error" aria-labelledby="error-title">
+      <canvas class="halftone hero__canvas" data-halftone="hero" data-src="/assets/img/hat.png" aria-hidden="true"></canvas>
+
+      <div class="hero__copy">
+        <h1 id="error-title">Page not found.</h1>
+
+        <figure class="log">
+          <figcaption class="log__bar"><span>zamorak.log</span></figcaption>
+<pre class="log__body"><code><span class="warn">! LaTeX Error: File `<span data-requested-path>this page</span>' not found.</span>
+
+Type X to quit or &lt;RETURN&gt; to proceed,
+or enter new name. (Default extension: tex)
+
+Enter file name: <span class="cursor" aria-hidden="true"></span></code></pre>
+        </figure>
+
+        <div class="actions">
+          <a class="btn btn--primary" href="/">
+            Return to zamorak.ai
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
