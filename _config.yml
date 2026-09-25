@@ -3,3 +3,7 @@
 exclude:
   - README.md
   - tools/
+
+# Jekyll skips dot-directories unless told otherwise; this one holds security.txt (RFC 9116).
+include:
+  - .well-known

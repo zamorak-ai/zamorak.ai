@@ -10,6 +10,8 @@
     window.addEventListener("scroll", update, { passive: true });
   }
 
+  // The path is shown decoded, minus control and format characters (line
+  // breaks, bidi overrides) that could rearrange the message around it.
   document.querySelectorAll("[data-requested-path]").forEach((el) => {
     let path = window.location.pathname;
     try {
@@ -17,7 +19,7 @@
     } catch {
       // keep the encoded form
     }
-    el.textContent = path;
+    el.textContent = path.replace(/\p{C}/gu, "");
   });
 
   // As LaTeX's prompt promises: a name opens that page on this site, and an
@@ -27,7 +29,7 @@
   if (prompt) {
     if (window.matchMedia("(pointer: fine)").matches) prompt.focus({ preventScroll: true });
     prompt.addEventListener("keydown", (event) => {
-      if (event.key !== "Enter") return;
+      if (event.key !== "Enter" || event.isComposing) return;
       event.preventDefault();
       const name = prompt.value.trim().replace(/^[/\\]+/, "");
       const target = new URL(name.toLowerCase() === "x" ? "/" : `/${name}`, window.location.origin);

@@ -12,7 +12,9 @@
  *
  * The dots assemble when a canvas first scrolls into view, a small glint
  * sparkles somewhere on the hat every few seconds, and a mouse lights up and
- * nudges the dots near it. With reduced motion, the finished hat is drawn once.
+ * nudges the dots near it. Between sparkles, with no mouse over it, nothing
+ * runs; off screen, nothing runs at all. With reduced motion, the finished hat
+ * is drawn once.
  *
  * If the image can't be read (browsers block pixel reads on pages opened from
  * file://), the canvas's parent gets the class "halftone-failed", which the
@@ -78,7 +80,8 @@
       this.sparkles = [];
       this.nextSparkle = INTRO + 800; // ms after the intro starts
       this.dirty = true;
-      this.frame = 0;
+      this.frame = 0; // requestAnimationFrame handle while the loop runs
+      this.timer = 0; // setTimeout handle while it sleeps until the next sparkle
       this.pending = 0;
       this.pointer = { x: 0, y: 0, tx: 0, ty: 0, presence: 0, target: 0 };
       this.tick = this.tick.bind(this);
@@ -101,7 +104,7 @@
         return;
       }
 
-      new IntersectionObserver(([entry]) => this.setVisible(entry.isIntersecting), {
+      new IntersectionObserver((entries) => this.setVisible(entries[entries.length - 1].isIntersecting), {
         rootMargin: "80px 0px",
       }).observe(this.canvas);
 
@@ -117,6 +120,7 @@
             p.y = p.ty;
           }
           p.target = 1;
+          this.wake();
         });
         host.addEventListener("pointerleave", () => {
           this.pointer.target = 0;
@@ -231,17 +235,31 @@
           return;
         }
         if (reducedMotion) this.draw(0);
+        else this.wake();
       });
     }
 
     setVisible(visible) {
       this.visible = visible;
       if (visible && this.introStart === null) this.introStart = performance.now() + 120;
-      if (visible && !this.frame) this.frame = requestAnimationFrame(this.tick);
-      if (!visible && this.frame) {
-        cancelAnimationFrame(this.frame);
-        this.frame = 0;
-      }
+      if (visible) this.wake();
+      else this.sleep();
+    }
+
+    // The loop runs only while something moves. It sleeps between sparkles,
+    // and a sparkle falling due, the mouse arriving or a resize wakes it.
+    wake() {
+      if (!this.visible || this.frame) return;
+      clearTimeout(this.timer);
+      this.timer = 0;
+      this.frame = requestAnimationFrame(this.tick);
+    }
+
+    sleep() {
+      cancelAnimationFrame(this.frame);
+      clearTimeout(this.timer);
+      this.frame = 0;
+      this.timer = 0;
     }
 
     // A glint on one of the hat's brightest dots; now and then, a second soon after.
@@ -257,7 +275,7 @@
     }
 
     tick(now) {
-      this.frame = requestAnimationFrame(this.tick);
+      this.frame = 0;
       const p = this.pointer;
       p.presence += (p.target - p.presence) * 0.12;
       if (Math.abs(p.target - p.presence) < 0.01) p.presence = p.target;
@@ -272,6 +290,9 @@
       if (animating || this.animating || this.dirty) this.draw(t);
       this.animating = animating;
       this.dirty = false;
+
+      if (animating) this.frame = requestAnimationFrame(this.tick);
+      else this.timer = setTimeout(() => this.wake(), this.nextSparkle - t + 20);
     }
 
     draw(t) {

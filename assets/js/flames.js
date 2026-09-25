@@ -261,7 +261,7 @@
       this.resize();
       new ResizeObserver(() => this.resize()).observe(this.canvas);
       if (reducedMotion) return;
-      new IntersectionObserver(([entry]) => this.setVisible(entry.isIntersecting), {
+      new IntersectionObserver((entries) => this.setVisible(entries[entries.length - 1].isIntersecting), {
         rootMargin: "80px 0px",
       }).observe(this.canvas);
     }

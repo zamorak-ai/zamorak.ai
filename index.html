@@ -1,7 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <!-- The inline script below marks the page as scripted before first paint, so the halftone's plain
+       fallback mark never flashes. The CSP hash covers that script byte for byte: regenerate it if the script changes. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-qOhFsq0QMV2REqNwk5hGH5bZE9SkX6gt6yeyKdYPv+U='; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
   <script>document.documentElement.classList.add("js")</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Zamorak — Coming soon</title>
@@ -67,7 +70,7 @@
     <section class="section status" aria-labelledby="status-title">
       <div class="container status__grid">
         <div>
-          <p class="label">§1&ensp;Status</p>
+          <p class="label">§1 Status</p>
           <h2 id="status-title" class="statement">
             We derive strength from chaos and adversity.
             <span class="hi">Something is being forged</span>,

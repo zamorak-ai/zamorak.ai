@@ -50,7 +50,9 @@ UNICODES = (
 
 
 def fetch(url: str) -> bytes:
-    with urllib.request.urlopen(url) as response:
+    if not url.startswith("https://"):
+        raise ValueError(f"refusing to fetch {url!r}: not an https URL")
+    with urllib.request.urlopen(url, timeout=60) as response:
         return response.read()
 
 
@@ -123,9 +125,6 @@ def rename(font: TTFont, family: str, style: str) -> None:
     for record in list(name.names):
         if record.nameID in values:
             name.setName(values[record.nameID], record.nameID, record.platformID, record.platEncID, record.langID)
-    for record in list(name.names):
-        if record.nameID in (16, 17) and record.nameID not in values:
-            name.removeNames(nameID=record.nameID)
 
 
 def build_fonts() -> None:
