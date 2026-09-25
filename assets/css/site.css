@@ -414,13 +414,20 @@ h2 {
   border-bottom: 1px solid transparent;
   border-radius: 0;
   outline: none;
+  box-shadow: none;
   background: transparent;
   color: var(--text);
   font: inherit;
   caret-color: var(--ember);
+  -webkit-appearance: none;
+  appearance: none;
 }
 
-.log__input:focus {
+/* No focus box: the caret and a faint underline show where you're typing. */
+.log__input:focus,
+.log__input:focus-visible {
+  outline: none;
+  box-shadow: none;
   border-bottom-color: rgb(255 90 60 / 0.4);
 }
 
