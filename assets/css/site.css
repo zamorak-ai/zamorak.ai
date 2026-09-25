@@ -405,6 +405,25 @@ h2 {
   animation: blink 1.1s steps(1) infinite;
 }
 
+/* The 404 page's "Enter file name:" prompt, typed into like the terminal it mimics. */
+.log__input {
+  width: 22ch;
+  max-width: 100%;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  caret-color: var(--ember);
+}
+
+.log__input:focus {
+  border-bottom-color: rgb(255 90 60 / 0.4);
+}
+
 @media (min-width: 960px) {
   .status__grid {
     grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
